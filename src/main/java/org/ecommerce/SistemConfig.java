@@ -3,7 +3,7 @@ package org.ecommerce;
 public class SistemConfig {
 
     private static SistemConfig instancia;
-    
+
     private String urlBaseDatos;
     private String temaUI;
     private boolean modoDebug;
