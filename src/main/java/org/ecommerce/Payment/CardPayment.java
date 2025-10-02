@@ -3,7 +3,7 @@ import org.ecommerce.Exception.FailedPayment;
 public class CardPayment implements PaymentProcessor {
     @Override
     public void paymentInit(double monto) {
-        System.out.println("💳 Iniciando pago con tarjeta por $" + monto);
+        System.out.println("Iniciando pago con tarjeta por $" + monto);
     }
 
     @Override
@@ -12,13 +12,13 @@ public class CardPayment implements PaymentProcessor {
             System.out.println("🔍 Verificando fondos de la tarjeta...");
             return true;
         } catch (Exception e) {
-            System.out.println("❌ Error al verificar el pago: " + e.getMessage());
+            System.out.println("Error al verificar el pago: " + e.getMessage());
             return false;
         }
     }
 
     @Override
     public void paymentConfirm() {
-        System.out.println("✅ Pago con tarjeta confirmado.");
+        System.out.println("Pago con tarjeta confirmado.");
     }
 }

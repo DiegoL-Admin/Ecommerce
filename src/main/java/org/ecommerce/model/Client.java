@@ -47,7 +47,6 @@ public class Client extends User {
     public List<Cart> getCarts() { return carts; }
     public void setCarts(List<Cart> carts) { this.carts = carts; }
 
-    // ✅ Aplica descuento solo si es premium
     public double calculateDiscount(double total) {
         double finalPrice = premium ? total * 0.9 : total;
         System.out.println(premium ? "💎 Descuento premium aplicado (10%)" : "ℹ️ Cliente estándar, sin descuento");

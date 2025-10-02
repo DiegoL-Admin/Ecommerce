@@ -31,16 +31,13 @@ public class Cart {
         this.items = items;
     }
 
-    // ✅ Agregar producto al carrito
     public void addProduct(Product product, int quantity) throws InsufficientInventory {
         if (product.getStock() < quantity) {
-            throw new InsufficientInventory("❌ Inventario insuficiente para: " + product.getName());
+            throw new InsufficientInventory("Inventario insuficiente para: " + product.getName());
         }
 
-        // Reducimos el stock del producto
         product.setStock(product.getStock() - quantity);
 
-        // Si el producto ya está en el carrito, simplemente aumentamos la cantidad
         for (CartItem item : items) {
             if (item.getProduct().getId() == product.getId()) {
                 item.setQuantity(item.getQuantity() + quantity);
@@ -48,16 +45,16 @@ public class Cart {
             }
         }
 
-        // Si no está en el carrito, lo agregamos como nuevo CartItem
+
         items.add(new CartItem(product, quantity));
     }
 
-    // ✅ Eliminar producto por ID
+
     public void removeProduct(int productId) {
         items.removeIf(item -> item.getProduct().getId() == productId);
     }
 
-    // ✅ Calcular total del carrito
+
     public double calculateTotal() {
         double total = 0.0;
         for (CartItem item : items) {

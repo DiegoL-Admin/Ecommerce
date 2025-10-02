@@ -22,7 +22,7 @@ public class Administrator extends User {
         this.department = "general";
     }
 
-    // ✅ Getters & Setters
+    // Getters & Setters
     public String getRole() {
         return role;
     }
@@ -52,7 +52,7 @@ public class Administrator extends User {
     }
 
     public void showPermissions() {
-        System.out.println("🔐 Permisos disponibles para " + getName() + " (" + role + "):");
+        System.out.println(" Permisos disponibles para " + getName() + " (" + role + "):");
         if ("superadmin".equalsIgnoreCase(role)) {
             System.out.println("- Todos los permisos");
         } else if ("manager".equalsIgnoreCase(role)) {

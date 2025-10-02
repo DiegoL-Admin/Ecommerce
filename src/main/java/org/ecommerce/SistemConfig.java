@@ -3,13 +3,11 @@ package org.ecommerce;
 public class SistemConfig {
 
     private static SistemConfig instancia;
-
-    // Ejemplo de configuraciones
+    
     private String urlBaseDatos;
     private String temaUI;
     private boolean modoDebug;
 
-    // 🔒 Constructor privado
     private SistemConfig() {
         this.urlBaseDatos = "jdbc:mysql://localhost:3306/ecommerce";
         this.temaUI = "modo-claro";
