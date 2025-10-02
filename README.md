@@ -28,6 +28,7 @@ Este proyecto implementa un backend completo para un sistema de e-commerce utili
 ```bash
 mvn compile
 mvn exec:java -Dexec.mainClass="org.ecommerce.Main"
-
+```
 ## 🚀 Ejecución Test
+```bash
 mvn test
