@@ -1,24 +1,49 @@
 package org.ecommerce.Service;
 
+import org.ecommerce.Model.*;
 
-import org.ecommerce.Model.Product;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService {
     private final List<Product> products = new ArrayList<>();
 
-    public ProductService() {
-        // Productos iniciales de ejemplo
-        products.add(new Product(1, "Laptop", "Laptop i7 16GB RAM", 1200.0, 10));
-        products.add(new Product(2, "Smartphone", "Android 5G", 800.0, 20));
-        products.add(new Product(3, "Mouse", "Mouse inalámbrico", 25.0, 50));
+    public PhysicalProduct addPhysicalProduct(String name, String desc, double price, int stock,
+                                              double weight, double width, double height, double depth) {
+        PhysicalProduct p = new PhysicalProduct(name, desc, price, stock, weight, width, height, depth);
+        products.add(p);
+        System.out.println("Producto físico agregado: " + name);
+        return p;
+    }
+
+    public DigitalProduct addDigitalProduct(String name, String desc, double price, int stock, double fileSize) {
+        DigitalProduct p = new DigitalProduct(name, desc, price, stock, fileSize);
+        products.add(p);
+        System.out.println("Producto digital agregado: " + name);
+        return p;
     }
 
     public List<Product> getAllProducts() {
-        return products;
+        return new ArrayList<>(products);
     }
 
+    public void showProducts() {
+        if (products.isEmpty()) {
+            System.out.println("⚠No hay productos disponibles.");
+        } else {
+            System.out.println("\nLista de productos:");
+            products.forEach(System.out::println);
+        }
+    }
+
+    public boolean remove(int id) {
+        boolean removed = products.removeIf(p -> p.getId() == id);
+        System.out.println(removed ? "🗑Producto eliminado con ID: " + id
+                : "Producto no encontrado con ID: " + id);
+        return removed;
+    }
+
+    // Buscar producto por ID
     public Product findById(int id) {
         return products.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
     }

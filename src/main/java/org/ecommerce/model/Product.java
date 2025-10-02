@@ -1,6 +1,7 @@
 package org.ecommerce.Model;
 
-public class Product {
+public abstract class Product {
+    private static int counterId = 1;
     private int id;
     private String name;
     private String description;
@@ -9,15 +10,19 @@ public class Product {
 
     public Product() {}
 
-    public Product(int id, String name, String description, double price, int stock) {
-        this.id = id;
+    public Product(String name, String description, double price, int stock) {
+        this.id = counterId++; // ID autoincremental
         this.name = name;
         this.description = description;
         this.price = price;
         this.stock = stock;
     }
 
-    // Getters y Setters
+    //  Métodos abstractos (polimorfismo)
+    public abstract String getProductType();
+    public abstract double calculateShippingCost();
+
+    //  Getters & Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -35,7 +40,11 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{id=" + id + ", name='" + name + "', price=" + price + ", stock=" + stock + "}";
+        return "ID: " + id +
+                " | Nombre: " + name +
+                " | Tipo: " + getProductType() +
+                " | Precio: $" + price +
+                " | Stock: " + stock;
     }
 }
 

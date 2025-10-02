@@ -1,23 +1,28 @@
 package org.ecommerce.Model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class User {
+    private static int contadorId = 1;
     private int id;
     private String name;
     private String email;
     private String password;
 
-    private List<Cart> carts = new ArrayList<>(); // historial de carritos o pedidos
-
     public User() {}
 
-    public User(int id, String name, String email, String password) {
-        this.id = id;
+    // Constructor completo
+    public User(String name, String email, String password) {
+        this.id = contadorId++;
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    // Constructor alternativo
+    public User(String username, String password) {
+        this.id = contadorId++;
+        this.name = username;
+        this.password = password;
+        this.email = "";
     }
 
     // Getters y Setters
@@ -32,9 +37,6 @@ public class User {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
-
-    public List<Cart> getCarts() { return carts; }
-    public void setCarts(List<Cart> carts) { this.carts = carts; }
 
     @Override
     public String toString() {
